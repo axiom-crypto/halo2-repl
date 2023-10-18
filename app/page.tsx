@@ -176,6 +176,9 @@ function App() {
       else if (e.message === "Cannot read properties of undefined (reading 'prove_snark')") {
         appendError("Must run key generation before proof generation.")
       }
+      else if (e.message === "undefined is not an object (evaluating 'this.halo2wasm.config')") {
+        appendLogs("Please wait. Still loading halo2-wasm.")
+      }
       else {
         appendError(e.message);
       }
@@ -477,6 +480,12 @@ function App() {
                   appendLink(`Link copied to clipboard: `, `https://repl-preview.axiom.xyz?gist=${id}`, "Axiom REPL")
                 }}
 
+              />
+              <MenuButton
+                text="Docs"
+                onClick={() => {
+                  window.open('https://docs-v2.axiom.xyz/axiom-repl/compute-functions', '_blank');
+                }}
               />
             </div>
             <Splitter direction={SplitDirection.Vertical} gutterClassName="bg-gray-100 w-1" initialSizes={initialSizesVertical} onResizeFinished={handleResizeFinishedVertical}>
