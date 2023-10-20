@@ -6,18 +6,14 @@ import Editor, { Monaco } from "@monaco-editor/react";
 import { type editor } from 'monaco-editor';
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { Halo2Repl } from "./worker/halo2repl";
-import { halo2Docs } from '@axiom-crypto/halo2-js/shared/docs/halo2Docs';
-import { DEFAULT_CIRCUIT_CONFIG } from "@axiom-crypto/halo2-js"
+import { DEFAULT_CIRCUIT_CONFIG, makePublicDocs, halo2Docs } from "@axiom-crypto/halo2-js"
 import { DEFAULT_CODE, DEFAULT_INPUT } from "@/utils/constants";
 import { fetchGist, fetchGithubAccessToken } from "@/utils/github";
 import JSZip from "jszip";
 import Dropdown from "@/components/MenuDropdown";
 import ButtonGroup from "@/components/ButtonGroup";
-import Button from "@/components/Button";
 import Splitter, { SplitDirection } from '@devbookhq/splitter'
-import Modal from "@/components/Modal";
 import Image from "next/image";
-import { useModal } from "connectkit";
 import MenuButton from "@/components/MenuButton";
 import { parseCircuitTypes } from "@/utils/circuit";
 import AxiomOverlay from "@/components/AxiomOverlay";
@@ -273,15 +269,15 @@ function App() {
       target: monaco.languages.typescript.ScriptTarget.ES2020,
       lib: ["es2020"]
     });
-    const libSource = halo2Docs.replaceAll("export ", "");;
-    const libUri = 'halo2lib.ts';
-    monaco.languages.typescript.javascriptDefaults.addExtraLib(libSource, libUri);
-    monaco.editor.createModel(libSource, 'typescript', monaco.Uri.parse(libUri));
-    if (!defaultInputs) return;
-    const code = parseCircuitTypes(defaultInputs);
-    let uri = monaco.Uri.parse("inputs.d.ts")
-    monaco.languages.typescript.javascriptDefaults.addExtraLib(code, "inputs.d.ts");
-    monaco.editor.createModel(code, 'typescript', uri)
+    const docs = [{docs: halo2Docs, name: "halo2lib.d.ts"}, {docs: makePublicDocs, name: "makePublic.d.ts"}];
+    if(defaultInputs){
+      docs.push({docs: parseCircuitTypes(defaultInputs), name: "inputs.d.ts"})
+    }
+    docs.forEach(doc => {
+      monaco.languages.typescript.javascriptDefaults.addExtraLib(doc.docs, doc.name);
+      monaco.editor.createModel(doc.docs, 'typescript', monaco.Uri.parse(doc.name));
+
+    })
     monaco.languages.typescript.javascriptDefaults.setEagerModelSync(true)
 
   }

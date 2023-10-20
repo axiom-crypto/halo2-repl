@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@axiom-crypto/halo2-js": "^0.1.81",
-    "@axiom-crypto/halo2-wasm": "^0.1.50",
+    "@axiom-crypto/halo2-js": "^0.1.90",
+    "@axiom-crypto/halo2-wasm": "^0.1.51",
     "@devbookhq/splitter": "^1.4.2",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",

@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@axiom-crypto/halo2-js':
-    specifier: ^0.1.81
-    version: 0.1.82
+    specifier: ^0.1.90
+    version: 0.1.90
   '@axiom-crypto/halo2-wasm':
-    specifier: ^0.1.50
-    version: 0.1.50
+    specifier: ^0.1.51
+    version: 0.1.51
   '@devbookhq/splitter':
     specifier: ^1.4.2
     version: 1.4.2
@@ -123,11 +123,10 @@ packages:
       '@jridgewell/trace-mapping': 0.3.19
     dev: false
 
-  /@axiom-crypto/halo2-js@0.1.82:
-    resolution: {integrity: sha512-pPeJrG099JT+fgTcr3F/niG9IX/rYIteP3SBXOL8PwBlhSOLnPC9eUgvEq/NYornovQwNWuZOv02OiCE/Wa/qQ==}
+  /@axiom-crypto/halo2-js@0.1.90:
+    resolution: {integrity: sha512-+TtiqVLxOFLkB6PfUvwYpwhRFLBuJLoyTDB+232vGBDvO25MoZtD/RYtr0G4IrkREuwMJQh7S1Uy6SDWbizPAg==}
     dependencies:
-      '@axiom-crypto/halo2-wasm': 0.1.50
-      '@axiom-crypto/tools': 0.3.22
+      '@axiom-crypto/halo2-wasm': 0.1.51
       ethers: 6.7.1
       prettier: 1.18.2
     transitivePeerDependencies:
@@ -135,17 +134,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@axiom-crypto/halo2-wasm@0.1.50:
-    resolution: {integrity: sha512-ULUVI2kFblIBtM9nTX0KQCqQiie4zX/0dMRwhoKYonuR3xBthwsUPvlWKg4Kw1pmUn6WWfTtFCgK3+DfMANHFw==}
-    dev: false
-
-  /@axiom-crypto/tools@0.3.22:
-    resolution: {integrity: sha512-s39y+QSXm1/RkAluYmS0sDgl+iJpxgkkjewvsnvnHsxQRXLE2+6P2rV0rI0CsvnTweJQNlWaFqWBLpY5HK7euw==}
-    dependencies:
-      ethers: 6.7.1
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
+  /@axiom-crypto/halo2-wasm@0.1.51:
+    resolution: {integrity: sha512-Hh+DSGo49UbDHr/tRRx1uCE66vKJIVdEqycIuzGkoZjD189jfJjuE8HgcNmiZMgSvrMeqgLX2mSJSs/9FQmTwQ==}
     dev: false
 
   /@babel/code-frame@7.22.13:
